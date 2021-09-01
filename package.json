@@ -6,10 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "ts-node-dev -r dotenv/config ./index.ts",
-    "start": "node ./lib/index.ts",
+    "start": "node ./lib/index.js",
     "postinstall": "tsc"
   },
-  "engines": { "node": "14.16.0" },
+  "engines": {
+    "node": "14.16.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
