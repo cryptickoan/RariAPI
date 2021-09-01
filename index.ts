@@ -24,10 +24,6 @@ cron.schedule('0 */4 * * *', () => {
     runAPY(RariInstance)
 }).start()
 
-app.get('/', async (req, res) => {
-    res.status(200).send('hello friend')
-})
-
 app.get('/history/supply/:pool', async (req: express.Request, res: express.Response) => {
     // If :pool does not reference an existing pool return 500 (server error)
     if (!req.params || (req.params.pool !== "USDC" && req.params.pool !== "DAI")) return res.status(500).send()
@@ -50,7 +46,7 @@ app.get('/history/apy/:pool', async (req: express.Request, res: express.Response
     poolModel.find({}).then((entries: any) => res.status(200).json(entries))
 })
 
-
-app.listen(3003, () => {
+const PORT = process.env.PORT || 3002
+app.listen(PORT, () => {
     connect();
 })
