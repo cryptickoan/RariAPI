@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
+import axios from 'axios'
 
 const url = process.env.MONGODB_URI ?? ""
 
@@ -41,8 +42,10 @@ supplyEntrySchema.set('toJSON', {
 export const stableApy = mongoose.model('stableAPY', apyEntrySchema)
 export const daiApy = mongoose.model('daiAPY', apyEntrySchema)
 
+// Vaults
 export const stableEntries = mongoose.model('stableEntry', supplyEntrySchema)
 export const daiEntries = mongoose.model('daiEntry', supplyEntrySchema)
+
 
 export const getModel = (pool: string, type: string) => { 
     switch (pool) {

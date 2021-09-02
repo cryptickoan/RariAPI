@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "ts-node-dev -r dotenv/config ./index.ts",
+    "start-dev": "ts-node-dev -r dotenv/config ./src/index.ts",
     "start": "node ./lib/index.js",
     "postinstall": "tsc"
   },
@@ -25,6 +25,7 @@
     "@types/cors": "^2.8.12",
     "@types/mongoose": "^5.11.97",
     "@types/node-cron": "^2.0.4",
+    "FuseSDK": "git+https://github.com/cryptickoan/FuseSDK2.0.git",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

@@ -54,6 +54,4 @@ export const runAPY = async (RariInstance: Rari) => {
 
     await daiAPY.save()
     await stableAPY.save()
-    console.log('hey')
-
 }
