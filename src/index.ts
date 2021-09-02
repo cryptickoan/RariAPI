@@ -10,15 +10,15 @@ import cors from 'cors'
 
 // Models
 import { connect, getModel } from './vaults/models'  
-import { getFuseModel } from './fuse/fuseModels'
+import { getFuseModel, getFuseModelWithID } from './fuse/fuseModels'
 
 // CronJobs
 import cron from 'node-cron'
 import { runSupply, runAPY } from './vaults/cronJobs'
-import { fusePool, getFuse } from './fuse/cronJobs'
+import { fetchPools } from './fuse/cronJobs'
 
-const RariInstance = new Rari("https://turbogeth.crows.sh")
-const FuseInstance = new Fuse("https://turbogeth.crows.sh")
+const RariInstance = new Rari("https://eth-mainnet.alchemyapi.io/v2/2Mt-6brbJvTA4w9cpiDtnbTo6qOoySnN")
+const FuseInstance = new Fuse("https://eth-mainnet.alchemyapi.io/v2/2Mt-6brbJvTA4w9cpiDtnbTo6qOoySnN")
 
 const app = express()
 app.use(cors())
@@ -26,12 +26,7 @@ app.use(cors())
 cron.schedule('0 */4 * * *', () => {
     runSupply(RariInstance)
     runAPY(RariInstance)
-    getFuse()
 }).start()
-
-app.get('/', async () => {
-    console.log(FuseInstance)
-})
 
 app.get('/history/supply/:pool', async (req: express.Request, res: express.Response) => {
     // If :pool does not reference an existing pool return 500 (server error)
@@ -61,7 +56,7 @@ app.get('/fuse/history/supply/:pool', async (req: express.Request, res: express.
     
     const poolKey = req.params.pool
 
-    const model = getFuseModel(poolKey)
+    const model = getFuseModelWithID(poolKey)
     model.find({}).then((entries) => res.status(200).json(entries))
     
 })

@@ -47,7 +47,7 @@ const Debug = mongoose.model('debug', fuseEntrySchema)
 
 export const Fuse = mongoose.model('Fuse', fuseEntrySchema)
 
-export const getFuseModel = (pool: string) => {
+export const getFuseModelWithID = (pool: string) => {
     switch (pool) {
         case "11":
             return PoolTogether;
@@ -104,6 +104,69 @@ export const getFuseModel = (pool: string) => {
         case "23":
             return Vesper
         case "7":
+            return TetranodeETH
+        default:
+            return Debug
+    }
+}
+
+export const getFuseModel = (pool: string) => {
+    switch (pool) {
+        case "PoolTogether Deposit Tokens":
+            return PoolTogether;
+        case "Rari DAO Fuse Pool R7 (SOCKS)":
+            return RariDaoR7
+        case  "Stake DAO Pool":
+            return StakeDao
+        case  "Index Coop Pool":
+            return IndexCoop
+        case "CRV Pool":
+            return CRV
+        case "Pendle Pool":
+            return Pendle
+        case "Rari DAO Fuse Pool R1 (Base)":
+            return RariDaoR1
+        case "Yearn's Yield":
+            return Yearn
+        case "EuroDollar Pool":
+            return EuroDollar
+        case "Olympus Pool Party":
+            return OlympusPoolParty
+        case "Harvest FARMstead":
+            return Harvest
+        case "Rari DAO Fuse Pool R5 (CEX)":
+            return RariDaoR5
+        case "Cartesian's pool":
+            return Cartesian
+        case "Rari DAO Fuse Pool R4 (Community)":
+            return RariDaoR4
+        case "Barnbridge pool":
+            return BarnBridge
+        case "Lido pool":
+            return LidoPool
+        case "Tetranode's Pool":
+            return Tetranode
+        case "Rari DAO Fuse Pool R2 (Core)":
+            return RariDAOR2
+        case "Ren Cross-Chain Pool":
+            return RenCrossChain
+        case "Volmex pool":
+            return Volmex
+        case "WOO pool":
+            return Woo
+        case "Rari DAO Fuse Pool R3 (VC)":
+            return RariDaoR3
+        case "Token Mass Injection Pool":
+            return TokenMass
+        case "Tetranode's Flavor of the Month":
+            return TetranodeMonth
+        case "Frax & Reflexer Stable Asset Pool":
+            return FraxReflexer
+        case "Badger Pool":
+            return Badger
+        case "Vesper Pool":
+            return Vesper
+        case "Tetranode's ETH Pool":
             return TetranodeETH
         default:
             return Debug
